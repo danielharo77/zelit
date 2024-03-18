@@ -32,6 +32,8 @@ public with sharing class contactWrapper {
     
     public class Account {
         @AuraEnabled public contactWrapper.BillingAddress extBillingAddress;
+        @AuraEnabled public contactWrapper.BillingAddress BillingAddress;
+
         @AuraEnabled public String status;
         @AuraEnabled public String extStatus;
         @AuraEnabled public String Id;
@@ -39,7 +41,9 @@ public with sharing class contactWrapper {
         @AuraEnabled public String AccountNumber;
         
         public Account(){
-        	BillingAddress extBillingAddress = new contactWrapper.BillingAddress();
+        	extBillingAddress = new contactWrapper.BillingAddress();
+            BillingAddress = new contactWrapper.BillingAddress();
+
         	status = 'NONE';
        	 	extStatus = 'NONE';
         	Id = '';
