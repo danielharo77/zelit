@@ -1,6 +1,12 @@
+/**
+ * @description       : 
+ * @author            : Daniel Haro
+ * @group             : 
+ * @last modified on  : 03-18-2024
+ * @last modified by  : Daniel Haro
+**/
 @isTest
 global class SecureContactAndAccountRetrievalMock implements HttpCalloutMock{
-    
     global HttpResponse respond(HttpRequest req){
         HttpResponse res = new HttpResponse();
         res.setHeader('Content-Type','application/json');

@@ -2,8 +2,8 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-17-2024
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @last modified on  : 03-18-2024
+ * @last modified by  : Daniel Haro
 **/
 public with sharing class wrapper {
     
@@ -14,20 +14,17 @@ public with sharing class wrapper {
     public String LastName;
     public String Id;
 
-        public class BillingAddress {
-            @AuraEnabled public String street;
-            @AuraEnabled public String city;
-            @AuraEnabled public String state;
-        }
+    public class BillingAddress {
+        @AuraEnabled public String street;
+        @AuraEnabled public String city;
+        @AuraEnabled public String state;
+    }
     
-        public class Account {
-            @AuraEnabled public BillingAddress BillingAddress;
-            @AuraEnabled public String VerificationStatus;
-            @AuraEnabled public String Id;
-            @AuraEnabled public String Name;
-            @AuraEnabled public String AccountNumber;
-        }
-    
-        
-           
-        }
+    public class Account {
+        @AuraEnabled public BillingAddress BillingAddress;
+        @AuraEnabled public String VerificationStatus;
+        @AuraEnabled public String Id;
+        @AuraEnabled public String Name;
+        @AuraEnabled public String AccountNumber;
+    }
+}

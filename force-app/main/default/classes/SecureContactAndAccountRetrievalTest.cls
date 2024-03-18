@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Daniel Haro
+ * @group             : 
+ * @last modified on  : 03-18-2024
+ * @last modified by  : Daniel Haro
+**/
 @IsTest 
 public class SecureContactAndAccountRetrievalTest{
     
@@ -54,13 +61,11 @@ public class SecureContactAndAccountRetrievalTest{
      @IsTest
     	static void testCreateAccount() {
            list<account> accountList= [Select name from Account];
-            system.debug('Account Name ' + accountList[0].name);
         }
     
     @IsTest
     	static void testgetDataNoRecords() {
             contactWrapper.BillingAddress testBillingaddress = new contactWrapper.BillingAddress();
-            
             contactWrapper.Account accountTest = new contactWrapper.Account();
             SecureContactAndAccountRetrieval.AccountRecordResponse test = new SecureContactAndAccountRetrieval.AccountRecordResponse();
             test.accountNumber = '2424424';
@@ -71,31 +76,20 @@ public class SecureContactAndAccountRetrievalTest{
     
      @IsTest
     	static void testgetDataSingleRecord() {
-            system.debug('running query test1!');
             List<contact> testData = SecureContactAndAccountRetrieval.retrieveContactsAndAccounts('Haro');
             system.assert(testData.size() == 1 , 'Query returned to many records test failed.');
             system.assert(testData[0].LastName == 'Haro', 'Query returned incorect record(s) Last Name does not match search.');
-
-            system.debug('show size! ' + testData.size());
-            system.debug('testresults 1 : ' + testData[0]);
-            system.debug('testresults 1 address data: ' + testData[0].Account.BillingAddress.getCity());
         }
     
      @IsTest
     	static void testgetDataMultiRecords() {
-            system.debug('running query test2');
             List<contact> testData = SecureContactAndAccountRetrieval.retrieveContactsAndAccounts('Smith');
-            system.debug('show test data for gogog' + testData);
             system.assert(testData.size() > 1 , 'Query returned the wrong number of records test failed.');
             for(contact cr : testData){
             	system.assert(cr.LastName == 'Smith' , 'Query returned incorect record(s) Last Name does not match search.');
             }
-            system.debug('show size! ' + testData.size());
-            system.debug('testresults 1 : ' + testData[0]);
         }
 
-    
-    
 //to be moved into a test factory class!
     public static account createAccount(String name, String accountNumber){
         return new account(name = name, BillingStreet = '2121 love.St' ,BillingCity = 'Austin' , BillingState = 'TX' , BillingPostalCode = '78250' , AccountNumber = accountNumber);// 'CD451796');
