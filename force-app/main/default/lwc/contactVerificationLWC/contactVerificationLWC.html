@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Contact and Account search">
+        <lightning-layout>
+            <lightning-input class="slds-p-around_medium" label="Search Word"  type="string" name="searchWord"  onchange={updateKeyWord} required="true"> </lightning-input>
+        </lightning-layout>
+        <lightning-button class="slds-m-left_x-small" label="Search" variant="brand" onclick={handleSearchClick}></lightning-button>
+        <lightning-datatable key-field="id" id="datatable" data={fields} columns={columns}></lightning-datatable>                 
+    </lightning-card>  
+</template>
